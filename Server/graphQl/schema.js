@@ -6,7 +6,8 @@ const {
   GraphQLInt,
   GraphQLObjectType,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLString
 } = graphQl;
 
 // Import GraphQl Types
@@ -71,6 +72,36 @@ const RootQueries = new GraphQLObjectType({
   }
 });
 
+const Mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    AddBook: {
+      type: BookType,
+      args: {
+        name: { type: GraphQLString },
+        publisherId: { type: GraphQLID },
+        authorId: { type: GraphQLID },
+        language: { type: GraphQLString },
+        printLength: { type: GraphQLInt },
+        summary: { type: GraphQLString },
+        publicationDate: { type: GraphQLString },
+        review: { type: GraphQLInt }
+      }
+    },
+    AddAuthor: {
+      name: { type: GraphQLString },
+      summary: { type: GraphQLString },
+      review: { type: GraphQLInt }
+    },
+    AddPublisher: {
+      name: { type: GraphQLString },
+      summary: { type: GraphQLString },
+      review: { type: GraphQLInt }
+    }
+  }
+});
+
 module.exports = new GraphQLSchema({
-  query: RootQueries
+  query: RootQueries,
+  mutation: Mutation
 });
