@@ -1,11 +1,23 @@
 const express = require("express");
 const graphQLHTTP = require("express-graphql");
-const mongoose = require("./mongoose/config");
+
+const mongoose = require("./mongoose/mongooseConfig");
+const schema = require("./graphQl/schema");
 
 const app = express();
 
-app.use("/graphql", graphQLHTTP({}));
+app.use(
+  "/graphql",
+  graphQLHTTP({
+    schema: schema,
+    graphiql: true
+  })
+);
 
-app.listen(4000, () => {
-  console.log("server is listening on port 4000");
+app.listen(4000, err => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("server is listening on port 4000");
+  }
 });
