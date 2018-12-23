@@ -86,17 +86,35 @@ const Mutation = new GraphQLObjectType({
         summary: { type: GraphQLString },
         publicationDate: { type: GraphQLString },
         review: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        let newBook = new booksModel({ ...args });
+        return newBook.save();
       }
     },
     AddAuthor: {
-      name: { type: GraphQLString },
-      summary: { type: GraphQLString },
-      review: { type: GraphQLInt }
+      type: AuthorType,
+      args: {
+        name: { type: GraphQLString },
+        summary: { type: GraphQLString },
+        review: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        let newAuthor = new authorsModel({ ...args });
+        return newAuthor.save();
+      }
     },
     AddPublisher: {
-      name: { type: GraphQLString },
-      summary: { type: GraphQLString },
-      review: { type: GraphQLInt }
+      type: PublisherType,
+      args: {
+        name: { type: GraphQLString },
+        summary: { type: GraphQLString },
+        review: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        let newPublisher = new publishersModel({ ...args });
+        return newPublisher.save();
+      }
     }
   }
 });
