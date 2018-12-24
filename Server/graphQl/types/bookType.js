@@ -8,6 +8,7 @@ const UserType = require("./userType");
 const BookType = new GraphQLObjectType({
   name: "BookType",
   fields: () => ({
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
     language: { type: GraphQLString },
     summary: { type: GraphQLString },
