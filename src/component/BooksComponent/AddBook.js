@@ -1,13 +1,22 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
+import { Row, Input } from "react-materialize";
+
 import booksQueries from "../../queries/bookQueries";
+import Form from "../utilities/Form";
+
+const addBookInputs = [
+  { placeholder: "Book Name", name: "name", width: 6 },
+  { placeholder: "Book Author", name: "author", width: 6 },
+  { placeholder: "Book Publisher", name: "publisher", width: 6 },
+  { placeholder: "Book Language", name: "language", width: 6 },
+  { placeholder: "Book Publication Date", name: "publicationDate", width: 6 },
+  { placeholder: "Book Pint Length", name: "printLength", width: 6 },
+  { placeholder: "Book Summary", name: "summary", width: 6 }
+];
 
 class AddBook extends React.Component {
-  state = {
-    name: "",
-    summary: "",
-    language: ""
-  };
+  state = {};
 
   onChange = e => {
     this.setState({
@@ -26,33 +35,7 @@ class AddBook extends React.Component {
     return (
       <div>
         <h1>Add Book Component</h1>
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <label> Book Name</label>
-            <input
-              placeholder="Book name"
-              name="name"
-              onChange={this.onChange}
-            />
-          </div>
-          <div>
-            <label> Book Language</label>
-            <input
-              placeholder="Book language"
-              name="language"
-              onChange={this.onChange}
-            />
-          </div>
-          <div>
-            <label> Book Summary</label>
-            <input
-              placeholder="Book summary"
-              name="summary"
-              onChange={this.onChange}
-            />
-          </div>
-          <button>Submit</button>
-        </form>
+        <Form inputs={addBookInputs} onChange={e => this.onChange(e)} />
       </div>
     );
   }
