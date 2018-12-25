@@ -1,10 +1,9 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
-import { Row, Input } from "react-materialize";
 
-import booksQueries from "../../queries/bookQueries";
-import Form from "../utilities/Form";
-
+import booksQueries from "../../../queries/bookQueries";
+import Form from "../../utilities/form/Form";
+import "./addBook.css";
 const addBookInputs = [
   { placeholder: "Book Name", name: "name", width: 6 },
   { placeholder: "Book Author", name: "author", width: 6 },
@@ -27,15 +26,20 @@ class AddBook extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.addBookQuerie({
-      variables: { ...this.state }
+      variables: { ...this.state },
+      refetchQueries: [{ query: booksQueries.getBooks }]
     });
   };
 
   render() {
     return (
-      <div>
+      <div className="addBook-container">
         <h1>Add Book Component</h1>
-        <Form inputs={addBookInputs} onChange={e => this.onChange(e)} />
+        <Form
+          inputs={addBookInputs}
+          onChange={e => this.onChange(e)}
+          onSubmit={e => this.onSubmit(e)}
+        />
       </div>
     );
   }
