@@ -39,6 +39,22 @@ const getBooks = gql`
   }
 `;
 
-const booksqueries = { AddBook, getBooks };
+const getBook = gql`
+  query($id: ID!) {
+    Book(id: $id) {
+      id
+      name
+      language
+      summary
+      image
+      review
+      publicationDate
+      printLength
+      image
+    }
+  }
+`;
+
+const booksqueries = { AddBook, getBooks, getBook };
 
 export default booksqueries;

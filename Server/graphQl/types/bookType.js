@@ -15,18 +15,10 @@ const BookType = new GraphQLObjectType({
     review: { type: GraphQLString },
     publicationDate: { type: GraphQLString },
     printLength: { type: GraphQLString },
-    publisherId: { type: GraphQLID },
-    authorId: { type: GraphQLID },
+    publisher: { type: GraphQLString },
+    author: { type: GraphQLString },
     userId: { type: GraphQLID },
     image: { type: GraphQLString },
-    author: {
-      type: Authortype,
-      resolve(parent, args) {}
-    },
-    publisher: {
-      type: PublisherType,
-      resolve(parent, args) {}
-    },
     user: {
       type: UserType,
       resolve(parent, args) {}

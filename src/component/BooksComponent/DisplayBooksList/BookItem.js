@@ -1,7 +1,8 @@
 import React from "react";
 import PropsTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const BookDisplay = props => {
+const BookItem = props => {
   return (
     <div className="book-display-card">
       <div className="card">
@@ -9,7 +10,9 @@ const BookDisplay = props => {
           <img src={props.book.image} alt={`Book  ${props.book.name}`} />
           <span className="card-title">{props.book.name}</span>
           <button className="btn-floating halfway-fab waves-effect waves-light red">
-            <i className="material-icons">add</i>
+            <Link to={`/books/${props.book.id}`}>
+              <i className="material-icons">add</i>
+            </Link>
           </button>
         </div>
         <div className="card-content">
@@ -20,8 +23,8 @@ const BookDisplay = props => {
   );
 };
 
-BookDisplay.PropsTypes = {
+BookItem.PropsTypes = {
   book: PropsTypes.object
 };
 
-export default BookDisplay;
+export default BookItem;

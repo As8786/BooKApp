@@ -10,7 +10,7 @@ const addBookInputs = [
   { placeholder: "Book Publisher", name: "publisher", width: 6 },
   { placeholder: "Book Language", name: "language", width: 6 },
   { placeholder: "Book Publication Date", name: "publicationDate", width: 6 },
-  { placeholder: "Book Pint Length", name: "printLength", width: 6 },
+  { placeholder: "Book Print Length", name: "printLength", width: 6 },
   { placeholder: "Book Image", name: "image", width: 6 },
   { placeholder: "Book Summary", name: "summary", width: 6 }
 ];
@@ -35,7 +35,7 @@ class AddBook extends React.Component {
   render() {
     return (
       <div className="addBook-container">
-        <h1>Add Book Component</h1>
+        <h1>Add Book</h1>
         <Form
           inputs={addBookInputs}
           onChange={e => this.onChange(e)}

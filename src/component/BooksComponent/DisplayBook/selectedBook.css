@@ -1,0 +1,20 @@
+.selected-book-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 27px;
+}
+.book-information-item {
+  display: flex;
+  align-items: center;
+}
+
+.selected-book-container .img-container {
+  width: 70%;
+}
+
+.selected-book-container .img-container img {
+  width: 80%;
+}

@@ -30,6 +30,7 @@ const RootQueries = new GraphQLObjectType({
         id: { type: GraphQLID }
       },
       resolve(parent, args) {
+        console.log(args.id);
         return booksModel.findById(args.id);
       }
     },
@@ -79,8 +80,8 @@ const Mutation = new GraphQLObjectType({
       type: BookType,
       args: {
         name: { type: GraphQLString },
-        publisherId: { type: GraphQLID },
-        authorId: { type: GraphQLID },
+        publisher: { type: GraphQLString },
+        author: { type: GraphQLString },
         language: { type: GraphQLString },
         printLength: { type: GraphQLString },
         summary: { type: GraphQLString },
