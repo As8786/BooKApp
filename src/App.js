@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Routes from "./Routes";
 import NavBar from "./NavBar";

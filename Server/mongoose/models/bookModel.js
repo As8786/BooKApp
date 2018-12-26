@@ -16,17 +16,20 @@ const bookSchema = new mongoose.Schema({
     type: String
   },
   printLength: {
-    type: Number
+    type: String
   },
   summary: {
     type: String,
     trim: true
   },
   publicationDate: {
-    type: Date
+    type: String
   },
   review: {
-    type: Number
+    type: String
+  },
+  image: {
+    type: String
   }
 });
 

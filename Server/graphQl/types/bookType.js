@@ -12,12 +12,13 @@ const BookType = new GraphQLObjectType({
     name: { type: GraphQLString },
     language: { type: GraphQLString },
     summary: { type: GraphQLString },
-    review: { type: GraphQLInt },
+    review: { type: GraphQLString },
     publicationDate: { type: GraphQLString },
-    printLength: { type: GraphQLInt },
+    printLength: { type: GraphQLString },
     publisherId: { type: GraphQLID },
     authorId: { type: GraphQLID },
     userId: { type: GraphQLID },
+    image: { type: GraphQLString },
     author: {
       type: Authortype,
       resolve(parent, args) {}

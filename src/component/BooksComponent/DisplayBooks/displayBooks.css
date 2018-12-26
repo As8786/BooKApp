@@ -1,0 +1,48 @@
+.books-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.book-display-card {
+  width: 25%;
+  height: 500px;
+  margin: 17px;
+}
+
+.card-summary-container {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.book-display-card .card {
+  height: 100%;
+  width: 100%;
+}
+
+.book-display-card .card-image {
+  height: 80% !important;
+  width: 100%;
+}
+.book-display-card .card-image img {
+  height: 100%;
+  width: 100%;
+}
+.book-display-card .card-content {
+  height: 20% !important;
+  width: 100% !important;
+}
+.book-display-card .card-title {
+  color: cadetblue !important;
+  font-weight: 600;
+}
+.books-display-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}

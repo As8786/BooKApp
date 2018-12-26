@@ -16,16 +16,19 @@ class Form extends React.Component {
                   onChange={this.props.onChange}
                   id={e.placeholder}
                   type="text"
-                  class="validate"
+                  className="validate"
                 />
-                <label for={e.placeholder}>{e.placeholder}</label>
+                <label htmlFor={e.placeholder}>{e.placeholder}</label>
               </div>
             );
           })}
         </form>
-        <a class="waves-effect waves-light btn" onClick={this.props.onSubmit}>
+        <button
+          className="waves-effect waves-light btn"
+          onClick={this.props.onSubmit}
+        >
           Submit
-        </a>
+        </button>
       </div>
     );
   }

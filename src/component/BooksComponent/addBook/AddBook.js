@@ -11,6 +11,7 @@ const addBookInputs = [
   { placeholder: "Book Language", name: "language", width: 6 },
   { placeholder: "Book Publication Date", name: "publicationDate", width: 6 },
   { placeholder: "Book Pint Length", name: "printLength", width: 6 },
+  { placeholder: "Book Image", name: "image", width: 6 },
   { placeholder: "Book Summary", name: "summary", width: 6 }
 ];
 

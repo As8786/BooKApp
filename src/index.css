@@ -19,3 +19,7 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+.routes-container {
+  width: 100%;
+}

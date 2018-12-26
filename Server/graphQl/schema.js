@@ -82,10 +82,10 @@ const Mutation = new GraphQLObjectType({
         publisherId: { type: GraphQLID },
         authorId: { type: GraphQLID },
         language: { type: GraphQLString },
-        printLength: { type: GraphQLInt },
+        printLength: { type: GraphQLString },
         summary: { type: GraphQLString },
         publicationDate: { type: GraphQLString },
-        review: { type: GraphQLInt }
+        image: { type: GraphQLString }
       },
       resolve(parent, args) {
         let newBook = new booksModel({ ...args });
