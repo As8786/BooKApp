@@ -6,6 +6,7 @@
 }
 .book-display-card {
   width: 25%;
+  max-width: 400px;
   height: 500px;
   margin: 17px;
 }

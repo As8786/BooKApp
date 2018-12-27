@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
+import { Link } from "react-router-dom";
 import queries from "../../../queries/bookQueries";
 import "./selectedBook.css";
 const bookInforamtionItem = [
@@ -29,6 +30,9 @@ const SelectedBook = props => {
             </div>
           );
         })}
+        <Link to={`/update_book/${Book.id}`}>
+          <button> Update Book </button>{" "}
+        </Link>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import AddBook from "./component/BooksComponent/addBook/AddBook";
 import DisplayBooks from "./component/BooksComponent/DisplayBooksList/DisplayBookList";
 import MainPage from "./component/MainPage";
 import SelectedBook from "./component/BooksComponent/DisplayBook/SelectedBook";
+import UpdateBook from "./component/BooksComponent/UpdateBook/UpdateBook";
 class Routes extends React.Component {
   render() {
     return (
@@ -15,6 +16,11 @@ class Routes extends React.Component {
           exact
           path="/books/:id"
           render={props => <SelectedBook bookId={props.match.params.id} />}
+        />
+        <Route
+          exact
+          path="/update_book/:id"
+          render={props => <UpdateBook bookId={props.match.params.id} />}
         />
       </div>
     );
