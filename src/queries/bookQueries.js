@@ -55,6 +55,14 @@ const getBook = gql`
   }
 `;
 
-const booksqueries = { AddBook, getBooks, getBook };
+const removeBook = gql`
+  mutation($id: ID) {
+    RemoveBook(id: $id) {
+      name
+    }
+  }
+`;
+
+const booksqueries = { AddBook, getBooks, getBook, removeBook };
 
 export default booksqueries;

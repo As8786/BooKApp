@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
+import { actions } from "./actions";
 
 let selectedBookReducer = (state = {}, action) => {
   switch (action.type) {
-    case "GET_SELECTED_BOOK":
-      return action.book;
+    case actions.GET_SELECTED_BOOK_SUCCESS:
+      return action.Book;
     default:
       return state;
   }
