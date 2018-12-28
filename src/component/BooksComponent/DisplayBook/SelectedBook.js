@@ -34,7 +34,7 @@ class SelectedBook extends React.Component {
       return (
         <div className="selected-book-container">
           <div className="img-container">
-            <img src={Book.image} />
+            <img src={Book.image} alt="book " />
           </div>
           <div className="book-information-container">
             {bookInforamtionItem.map((e, i) => {

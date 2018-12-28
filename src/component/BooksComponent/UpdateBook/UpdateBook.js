@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
-
+import _ from "lodash";
 import booksQueries from "../../../queries/bookQueries";
 import Form from "../../utilities/form/Form";
 import "./updateBook.css";
@@ -16,7 +16,7 @@ const updateBookInputs = [
 ];
 
 class UpdateBook extends React.Component {
-  state = { name: null };
+  state = {};
 
   onChange = e => {
     this.setState({
@@ -26,9 +26,8 @@ class UpdateBook extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.addBookQuerie({
-      variables: { ...this.state },
-      refetchQueries: [{ query: booksQueries.getBooks }]
+    this.props.updateBookQuery({
+      variables: { ...this.state, id: this.props.bookId }
     });
   };
 
@@ -37,22 +36,27 @@ class UpdateBook extends React.Component {
     if (loading) {
       return <div> Loading ...</div>;
     } else {
-      this.state.name === null &&
+      let stateValues = _.values(this.state);
+      //      console.log(stateValues);
+      if (stateValues.length === 0) {
         this.setState({
           ...Book
         });
-      return (
-        <Form
-          inputs={updateBookInputs}
-          onChange={e => this.onChange(e)}
-          onSubmit={e => this.onSubmit(e)}
-          value={this.state}
-        />
-      );
+      } else {
+        return (
+          <Form
+            inputs={updateBookInputs}
+            onChange={e => this.onChange(e)}
+            onSubmit={e => this.onSubmit(e)}
+            value={this.state}
+          />
+        );
+      }
     }
   };
 
   render() {
+    console.log(this.props.getBookQuery);
     return (
       <div className="updateBook-container">
         <h1>Update Book Information</h1>
@@ -66,7 +70,8 @@ export default compose(
   graphql(booksQueries.getBook, {
     name: "getBookQuery",
     options: props => {
-      return { variables: { id: props.bookIds } };
+      return { variables: { id: props.bookId } };
     }
-  })
+  }),
+  graphql(booksQueries.updateBook, { name: "updateBookQuery" })
 )(UpdateBook);

@@ -6,10 +6,10 @@ const bookSchema = new mongoose.Schema({
     trim: true,
     require: true
   },
-  publisherId: {
+  publisher: {
     type: String
   },
-  authorId: {
+  author: {
     type: String
   },
   language: {

@@ -8,6 +8,8 @@ const AddBook = gql`
     $image: String!
     $printLength: String!
     $publicationDate: String!
+    $author: String!
+    $publisher: String!
   ) {
     AddBook(
       name: $name
@@ -16,6 +18,8 @@ const AddBook = gql`
       printLength: $printLength
       image: $image
       publicationDate: $publicationDate
+      author: $author
+      publisher: $publisher
     ) {
       name
       id
@@ -51,6 +55,8 @@ const getBook = gql`
       publicationDate
       printLength
       image
+      author
+      publisher
     }
   }
 `;
@@ -72,6 +78,8 @@ const updateBook = gql`
     $printLength: String!
     $publicationDate: String!
     $id: ID!
+    $author: String!
+    $publisher: String!
   ) {
     UpdateBook(
       name: $name
@@ -81,6 +89,8 @@ const updateBook = gql`
       image: $image
       publicationDate: $publicationDate
       id: $id
+      author: $author
+      publisher: $publisher
     ) {
       name
     }
