@@ -63,6 +63,30 @@ const removeBook = gql`
   }
 `;
 
-const booksqueries = { AddBook, getBooks, getBook, removeBook };
+const updateBook = gql`
+  mutation(
+    $name: String!
+    $language: String!
+    $summary: String!
+    $image: String!
+    $printLength: String!
+    $publicationDate: String!
+    $id: ID!
+  ) {
+    UpdateBook(
+      name: $name
+      language: $language
+      summary: $summary
+      printLength: $printLength
+      image: $image
+      publicationDate: $publicationDate
+      id: $id
+    ) {
+      name
+    }
+  }
+`;
+
+const booksqueries = { AddBook, getBooks, getBook, removeBook, updateBook };
 
 export default booksqueries;

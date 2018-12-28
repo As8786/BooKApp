@@ -1,7 +1,5 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
-import { connect } from "react-redux";
-import { getSelectedBook } from "../../../reduxFiles/actions";
 
 import booksQueries from "../../../queries/bookQueries";
 import Form from "../../utilities/form/Form";
@@ -18,11 +16,8 @@ const updateBookInputs = [
 ];
 
 class UpdateBook extends React.Component {
-  state = {};
-  componentDidMount() {
-    this.props.onDidiMount("5c23dc4899f23318d0ef15df");
-    console.log("mounttt");
-  }
+  state = { name: null };
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -38,18 +33,20 @@ class UpdateBook extends React.Component {
   };
 
   fetchBookInformationAndFillState = () => {
-    let { loading, Book } = this.props.getBook;
+    let { loading, Book } = this.props.getBookQuery;
     if (loading) {
       return <div> Loading ...</div>;
     } else {
-      this.setState({
-        ...Book
-      });
+      this.state.name === null &&
+        this.setState({
+          ...Book
+        });
       return (
         <Form
           inputs={updateBookInputs}
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}
+          value={this.state}
         />
       );
     }
@@ -59,26 +56,17 @@ class UpdateBook extends React.Component {
     return (
       <div className="updateBook-container">
         <h1>Update Book Information</h1>
+        {this.fetchBookInformationAndFillState()}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    selectedBook: state.selectedBookReducer
-  };
-};
-
-const mapDispacthToProps = dispatch => {
-  return {
-    onDidiMount: bookId => {
-      dispatch(getSelectedBook(bookId));
+export default compose(
+  graphql(booksQueries.getBook, {
+    name: "getBookQuery",
+    options: props => {
+      return { variables: { id: props.bookIds } };
     }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispacthToProps
+  })
 )(UpdateBook);

@@ -17,6 +17,7 @@ class Form extends React.Component {
                   id={e.placeholder}
                   type="text"
                   className="validate"
+                  value={this.props.value[e.name]}
                 />
                 <label htmlFor={e.placeholder}>{e.placeholder}</label>
               </div>

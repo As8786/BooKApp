@@ -40,6 +40,7 @@ class AddBook extends React.Component {
           inputs={addBookInputs}
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}
+          value={this.state}
         />
       </div>
     );

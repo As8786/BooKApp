@@ -117,11 +117,32 @@ const Mutation = new GraphQLObjectType({
         return newPublisher.save();
       }
     },
-    RemoveBook : {
-      type : BookType,
-      args : {id : {type : GraphQLID}},
+    RemoveBook: {
+      type: BookType,
+      args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return booksModel.findOneAndDelete({_id: args.id})
+        return booksModel.findOneAndDelete({ _id: args.id });
+      }
+    },
+    UpdateBook: {
+      type: BookType,
+      args: {
+        name: { type: GraphQLString },
+        publisher: { type: GraphQLString },
+        author: { type: GraphQLString },
+        language: { type: GraphQLString },
+        printLength: { type: GraphQLString },
+        summary: { type: GraphQLString },
+        publicationDate: { type: GraphQLString },
+        image: { type: GraphQLString },
+        id: { type: GraphQLID }
+      },
+      resolve(parent, args) {
+        let updatedBook = { ...args };
+        return booksModel.findOneAndUpdate(
+          { _id: args.id },
+          { ...updatedBook }
+        );
       }
     }
   }
